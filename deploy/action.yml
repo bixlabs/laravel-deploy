@@ -1,0 +1,21 @@
+name: 'Laravel deployer'
+author: bixlabs
+description: 'Github action for deploy laravel'
+branding:
+  color: green
+  icon: cloud
+inputs:
+  deploy_dir:
+    description: Path where the deployments will happens
+    required: true
+    default: '/var/www/sample'
+outputs:
+  deploy_version:
+    description: Version deployed
+  deploy_path:
+    description: Full path of the latest deploy
+runs:
+  using: docker
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.deploy_dir }}
