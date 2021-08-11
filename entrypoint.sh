@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 
-time=$(date)
-echo "::set-output deploy_version=time::$time"
-echo "::set-output deploy_path=$1/$time"
+timestamp=$(date +"%T")
+echo "::set-output name=deploy_version::$timestamp"
+echo "::set-output name=deploy_path::$1/$timestamp"

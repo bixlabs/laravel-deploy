@@ -1,0 +1,15 @@
+on: []
+jobs:
+  act_deploy:
+    runs-on: ubuntu-latest
+    name: a job to test deployment action
+    steps:
+      - name: Deploy process
+        id: deploy
+        uses: bixlabs/laravel-deploy@main
+        with:
+          deploy_dir: '/var/www/taystr-backend'
+      - name: After deploy
+        run: |
+          echo "version ${{ steps.deploy.outputs.deploy_version }}" \
+            "at ${{ steps.deploy.outputs.deploy_path }}"
