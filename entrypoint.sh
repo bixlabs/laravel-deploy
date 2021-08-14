@@ -103,6 +103,16 @@ prepare_deploy_dir() {
   eval "$post_deploy"
 EOF
 }
+
+post_deploy() {
+  # shellcheck disable=SC2087
+  ssh -i "$deploy_key_path" -o BatchMode=yes -o StrictHostKeyChecking=no "$deploy_username@$deploy_host" bash <<EOF
+
+  cd $deploy_dir/current
+
+  eval "$post_deploy"
+EOF
+}
 # END REMOTE FUNCTIONS
 
 echo "::add-mask::$deploy_key_path"
@@ -116,6 +126,8 @@ validate_deploy_target
 prepare_deploy_dir
 # step 4
 deploy_source_dir
+# step 5
+post_deploy
 
 
 echo "::set-output name=deploy_version::$deploy_version"
