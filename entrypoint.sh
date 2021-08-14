@@ -56,7 +56,7 @@ deploy_source_dir() {
     exit 1
   fi
 
-  rsync -e "ssh -i $deploy_key_path -o StrictHostKeyChecking=no" -avzr --quiet --delete "$source_dir/" "$deploy_username@$deploy_host:$deploy_path/"
+  rsync -e "ssh -i $deploy_key_path -o StrictHostKeyChecking=no" -avzr --quiet --delete "$source_dir" "$deploy_username@$deploy_host:$deploy_path/"
 }
 # END LOCAL FUNCTIONS
 
