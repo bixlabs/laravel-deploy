@@ -22,6 +22,10 @@ inputs:
   deploy_username:
     description: SSH username of the deployment target
     required: true
+  post_deploy:
+    description: Allow execute commands after deploy
+    required: false
+    default: 'echo "post_deploy"'
 outputs:
   deploy_version:
     description: Version deployed
@@ -35,4 +39,5 @@ runs:
     - ${{ inputs.source_dir }}
     - ${{ inputs.deploy_host }}
     - ${{ inputs.deploy_username }}
+    - ${{ inputs.post_deploy }}
     - ${{ inputs.deploy_key }}

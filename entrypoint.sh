@@ -2,7 +2,7 @@
 
 set -e
 
-if [ $# -lt 5 ]; then
+if [ $# -lt 6 ]; then
   echo "not enough arguments ro run"
   exit 1
 fi
@@ -11,7 +11,8 @@ deploy_dir="$1"
 source_dir="$2"
 deploy_host="$3"
 deploy_username="$4"
-deploy_key=$(echo "${@: 5}" | tr ' ' '\n' )
+post_deploy="$5"
+deploy_key=$(echo "${@: 6}" | tr ' ' '\n' )
 
 script_dir="$( cd "$( dirname "$0" )" && pwd )"
 deploy_key_path="$script_dir/.key"
@@ -99,7 +100,7 @@ prepare_deploy_dir() {
 
   cd $deploy_dir/current
 
-  php artisan migrate:fresh --seed
+  $post_deploy
 EOF
 }
 # END REMOTE FUNCTIONS
