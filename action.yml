@@ -34,5 +34,5 @@ runs:
     - ${{ inputs.deploy_dir }}
     - ${{ inputs.source_dir }}
     - ${{ inputs.deploy_host }}
-    - ${{ inputs.deploy_key }}
     - ${{ inputs.deploy_username }}
+    - ${{ inputs.deploy_key }}
