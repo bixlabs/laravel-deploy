@@ -100,7 +100,7 @@ prepare_deploy_dir() {
 
   cd $deploy_dir/current
 
-  "$post_deploy"
+  eval "$post_deploy"
 EOF
 }
 # END REMOTE FUNCTIONS
