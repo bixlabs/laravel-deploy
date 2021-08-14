@@ -95,21 +95,7 @@ prepare_deploy_dir() {
     debug "previous deploy \$(readlink -f $deploy_dir/current)"
   fi
 
-  ln -sf $deploy_path $deploy_dir/current
-
-EOF
-}
-
-link_deploy() {
-  ssh -T -i "$deploy_key_path" -o StrictHostKeyChecking=no "$deploy_username@$deploy_host" bash <<EOF
-  debug() {
-    echo "::debug::\$*"
-  }
-
-  error() {
-    echo "::error ::\$*"
-  }
-
+  ln -sfn $deploy_path $deploy_dir/current
 
 EOF
 }
