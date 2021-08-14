@@ -1,0 +1,6 @@
+# keys
+*.pem
+.key
+
+# Automgenerate sample
+sample

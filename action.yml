@@ -8,7 +8,20 @@ inputs:
   deploy_dir:
     description: Path where the deployments will happens
     required: true
-    default: '/var/www/sample'
+    default: '/var/www/laravel_deploy'
+  source_dir:
+    description: path to be deployed
+    required: true
+    default: './'
+  deploy_host:
+    description: ip or hostname of the deployment target
+    required: true
+  deploy_key:
+    description: SSH private key of the deployment target
+    required: true
+  deploy_username:
+    description: SSH username of the deployment target
+    required: true
 outputs:
   deploy_version:
     description: Version deployed
@@ -19,3 +32,7 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.deploy_dir }}
+    - ${{ inputs.source_dir }}
+    - ${{ inputs.deploy_host }}
+    - ${{ inputs.deploy_key }}
+    - ${{ inputs.deploy_username }}

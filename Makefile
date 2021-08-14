@@ -1,6 +1,18 @@
-.MAIN: test
+default: test
 
-check-deps:
-	@act --version >/dev/null 2>&1 || (echo "'act' is not installed, go to https://github.com/nektos/act#installation "; exit 1)
-test: check-deps
-	act -j act_deploy
+# private.pem
+deploy_dir      := ${DEPLOY_DIR}
+source_dir      := ./sample
+deploy_host     := ${DEPLOY_HOST}
+deploy_key      := $(shell cat ${DEPLOY_KEY})
+deploy_username := ${DEPLOY_USERNAME}
+
+test: clean
+	@./entrypoint.sh \
+		$(deploy_dir) \
+		$(source_dir) \
+		$(deploy_host) \
+		$(deploy_username) \
+		$(deploy_key)
+clean:
+	@rm -rf $(deploy_dir) .key
