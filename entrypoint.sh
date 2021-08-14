@@ -97,6 +97,9 @@ prepare_deploy_dir() {
 
   ln -sfn $deploy_path $deploy_dir/current
 
+  cd $deploy_dir/current
+
+  php artisan migrate:fresh --seed
 EOF
 }
 # END REMOTE FUNCTIONS
