@@ -6,7 +6,7 @@ source_dir      := ./sample
 deploy_host     := ${DEPLOY_HOST}
 deploy_key      := $(shell cat ${DEPLOY_KEY})
 deploy_username := ${DEPLOY_USERNAME}
-post_deploy     := '"echo post deploy"'
+post_deploy     := 'php app/some.php'
 
 test: clean
 	@./entrypoint.sh \
