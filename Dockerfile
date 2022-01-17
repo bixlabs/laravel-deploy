@@ -4,6 +4,6 @@ COPY entrypoint.sh /entrypoint.sh
 
 RUN pacman -Scc
 
-RUN pacman -Syu openssh rsync --noconfirm
+RUN pacman -Syy openssh rsync --noconfirm
 
 ENTRYPOINT ["/entrypoint.sh"]
