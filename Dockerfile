@@ -2,7 +2,7 @@ FROM archlinux:base-devel-20220109.0.43549
 
 COPY entrypoint.sh /entrypoint.sh
 
-RUN pacman -Sy glibc | grep Version
+RUN pacman -Syu glibc-2.34 | grep Version --noconfirm
 
 RUN pacman -Syy openssh rsync --noconfirm
 
