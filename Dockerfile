@@ -2,8 +2,6 @@ FROM archlinux:base-devel-20220109.0.43549
 
 COPY entrypoint.sh /entrypoint.sh
 
-RUN pacman -Syy glibc-2.34 --noconfirm
-
-RUN pacman -Syy openssh rsync --noconfirm
+RUN pacman -Syy openssh rsync glibc --noconfirm
 
 ENTRYPOINT ["/entrypoint.sh"]
